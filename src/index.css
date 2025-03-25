@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(#f3effa 70%, #eae2f7 75%);
+}
+
+h2 {
+    text-align: left;
+    font-size: 2em;
+}
