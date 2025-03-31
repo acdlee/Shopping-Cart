@@ -37,9 +37,14 @@ h3 {
     align-items: center;
 }
 
-.aside ul li span {
+.span {
     width: 7em;
     margin-right: 1em;
+}
+
+.quantitySpan {
+    margin-right: 0;
+    width: fit-content;
 }
 
 .removeBtn {

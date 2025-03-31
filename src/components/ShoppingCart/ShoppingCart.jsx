@@ -5,7 +5,7 @@ import { FaShoppingCart } from "react-icons/fa";
 
 function ShoppingCart() {
     const [showCart, setShowCart] = useState(false);
-    const cartCtx = use(CartContext);
+    const {cart, dispatch, cartCxtValue} = use(CartContext);
 
     const handleCartBtn = () => setShowCart(prevCart => !prevCart);
 
@@ -19,21 +19,35 @@ function ShoppingCart() {
                         onClick={handleCartBtn}>Close</button>
                     <ul>
                         {
-                            cartCtx.cartItems.map(item => (
+                            cart.map(item => (
                                 <li key={item.id}>
-                                    <span>{item.name}</span>
-                                    <span>Quantity: {item.quantity}</span>
-                                    <span>${(item.price * item.quantity).toFixed(2)}</span>
+                                    <span className={styles.span}>{item.name}</span>
+                                    <button
+                                        className={styles.quantityBtn}
+                                    >
+                                        -
+                                    </button>
+                                    <span className={styles.quantitySpan}>{item.quantity}</span>
+                                    <button
+                                        className={styles.quantityBtn}
+                                    >
+                                        +
+                                    </button>
+                                    <span className={styles.span}>${(item.price * item.quantity).toFixed(2)}</span>
                                     <button
                                         className={styles.removeBtn}
-                                        onClick={() => cartCtx.removeItem(item)}>
+                                        onClick={() => dispatch({
+                                            type: "REMOVE_ITEM",
+                                            payload: {...item},
+                                        })
+                                    }>
                                             Remove
                                     </button>
                                 </li>
                             ))
                         }
                     </ul>
-                    <p className={styles.total}>Total: ${cartCtx.calculateTotal().toFixed(2)}</p>
+                    <p className={styles.total}>Total: ${cartCxtValue.calculateTotal().toFixed(2)}</p>
                 </div>
             : 
                 <FaShoppingCart

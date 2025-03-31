@@ -22,7 +22,7 @@ const DATA = [
 ];
 
 function Products() {
-    const cartCtx = use(CartContext);
+    const { dispatch } = use(CartContext);
 
     return (
         <section className={styles.section}>
@@ -34,7 +34,12 @@ function Products() {
                             <h3>{item.name}</h3>
                             <p>${item.price}</p>
                             <button
-                                onClick={() => cartCtx.addItem(item)}
+                                onClick={ () => dispatch(
+                                    {
+                                        type: "ADD_ITEM", 
+                                        payload: {...item},
+                                    }
+                                )}
                             >
                                 Add To Cart
                             </button>
