@@ -39,10 +39,16 @@
     background-color: #0096FF;
     border: none;
     border-radius: 5px;
-    transition: all .15s;
     box-shadow: 2px 2px 2px black;
 }
 
 .section ul li button:hover {
     transform: scale(1.05);
+    transition: .15s;
+}
+
+.section ul li button:active {
+    transform: scale(.9);
+    background-color: green;
+    transition: .05s;
 }
